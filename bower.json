@@ -1,0 +1,21 @@
+{
+  "name": "objtrans",
+  "description": "transform an object",
+  "main": "build/index.js",
+  "authors": [
+    "ndxbxrme"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "object",
+    "transform"
+  ],
+  "homepage": "https://github.com/ndxbxrme/objtrans",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
