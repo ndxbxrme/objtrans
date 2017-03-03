@@ -12,16 +12,27 @@ user =
   local:
     email: 'jim@jim.com'
     password: '23goh32fgdf'
-  firstname: 'jim'
+  firstname: 'Jim'
   horrible:
     obj:
-      surname: 'smith'
+      surname: 'Smith'
     
 pattern = 
-  'username': 'name'
+  nameDetails:
+    name: true
+    username: 'name'
   email: 'emails[first]'
+  firstname: (input) ->
+    if input
+      input.toUpperCase()
+  lastname: ['horrible.obj.surname', (input) ->
+    if input
+      input.toLowerCase()
+  ]
   details:
     fullname: (input) ->
       input.firstname + ' ' + input.horrible.obj.surname
+      
 newUser = objtrans user, pattern
-console.log newUser
+
+console.log JSON.stringify(newUser, null, '  ')
