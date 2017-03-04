@@ -53,6 +53,9 @@
           }
           if (myInput) {
             output[field] = myInput;
+          } else {
+            output[field] = void 0;
+            break;
           }
         }
         output[field] = func ? func(output[field]) : output[field];

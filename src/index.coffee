@@ -41,6 +41,9 @@ objtrans = (input, pattern) ->
            myInput = myInput[bit]
         if myInput
           output[field] = myInput
+        else
+          output[field] = undefined
+          break
       output[field] = if func then (func output[field]) else output[field]
   output
   
