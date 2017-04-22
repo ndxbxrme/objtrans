@@ -1,6 +1,8 @@
 (function() {
   'use strict';
-  this.objtrans = function(input, pattern, output) {
+  var objtrans;
+
+  objtrans = function(input, pattern, output) {
     var bit, bits, field, func, i, inField, index, len, myInput, type;
     if (!output) {
       output = {};
@@ -23,12 +25,12 @@
         inField = input[field];
         if (inField) {
           if (Object.prototype.toString.call(inField) === '[object Object]') {
-            output[field] = this.objtrans(inField, pattern[field]);
+            output[field] = objtrans(inField, pattern[field]);
           } else {
             output[field] = func ? func(inField) : inField;
           }
         } else {
-          output[field] = this.objtrans(input, pattern[field]);
+          output[field] = objtrans(input, pattern[field]);
         }
       } else if (type === '[object String]') {
         bits = pattern[field].split(/\./g);
@@ -64,8 +66,10 @@
     return output;
   };
 
+  this.objtrans = objtrans;
+
   if (typeof exports === 'object') {
-    module.exports = this.objtrans;
+    module.exports = objtrans;
   }
 
 }).call(this);

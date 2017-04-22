@@ -1,6 +1,6 @@
 'use strict'
 
-@objtrans = (input, pattern, output) ->
+objtrans = (input, pattern, output) ->
   if not output
     output = {}
   for field of pattern
@@ -19,11 +19,11 @@
       inField = input[field]
       if inField
         if Object.prototype.toString.call(inField) is '[object Object]'
-          output[field] = @objtrans inField, pattern[field]
+          output[field] = objtrans inField, pattern[field]
         else
           output[field] = if func then (func inField) else inField
       else
-        output[field] = @objtrans input, pattern[field]
+        output[field] = objtrans input, pattern[field]
     else if type is '[object String]'
       bits = pattern[field].split(/\./g)
       myInput = JSON.parse JSON.stringify input
@@ -47,6 +47,6 @@
           break
       output[field] = if func then (func output[field]) else output[field]
   output
-  
+@objtrans = objtrans  
 if typeof exports is 'object'
-  module.exports = @objtrans
+  module.exports = objtrans
