@@ -19,11 +19,11 @@
       inField = input[field]
       if inField
         if Object.prototype.toString.call(inField) is '[object Object]'
-          output[field] = objtrans inField, pattern[field]
+          output[field] = @objtrans inField, pattern[field]
         else
           output[field] = if func then (func inField) else inField
       else
-        output[field] = objtrans input, pattern[field]
+        output[field] = @objtrans input, pattern[field]
     else if type is '[object String]'
       bits = pattern[field].split(/\./g)
       myInput = JSON.parse JSON.stringify input

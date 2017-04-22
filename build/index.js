@@ -23,12 +23,12 @@
         inField = input[field];
         if (inField) {
           if (Object.prototype.toString.call(inField) === '[object Object]') {
-            output[field] = objtrans(inField, pattern[field]);
+            output[field] = this.objtrans(inField, pattern[field]);
           } else {
             output[field] = func ? func(inField) : inField;
           }
         } else {
-          output[field] = objtrans(input, pattern[field]);
+          output[field] = this.objtrans(input, pattern[field]);
         }
       } else if (type === '[object String]') {
         bits = pattern[field].split(/\./g);
