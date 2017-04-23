@@ -14,7 +14,8 @@ objtrans = (input, pattern, output) ->
       func = pattern[field]
       type = '[object Boolean]'
     if type is '[object Boolean]'
-      output[field] = if func then (func(input[field] or input)) else input[field]
+      if input[field] or input
+        output[field] = if func then (func(input[field] or input)) else input[field]
     else if type is '[object Object]'
       inField = input[field]
       if inField
