@@ -20,9 +20,7 @@
         type = '[object Boolean]';
       }
       if (type === '[object Boolean]') {
-        if (input[field] || input) {
-          output[field] = func ? func(input[field] || input) : input[field];
-        }
+        output[field] = func ? func(input[field] || input) : input[field];
       } else if (type === '[object Object]') {
         inField = input[field];
         if (inField) {
